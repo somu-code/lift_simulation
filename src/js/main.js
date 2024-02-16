@@ -45,8 +45,8 @@ function main() {
       const divElement = document.createElement("div");
       divElement.className = "floor-container";
       divElement.innerHTML = `
-  <h1 class="floor-heading">LEVEL ${i}</h1>
-  <hr class="floor-hr">
+  <div class="floor-base-line"></div>
+  <h1 class="floor-heading">Floor ${i}</h1>
 `;
       rootElement.append(divElement);
     }

@@ -105,8 +105,15 @@ body {
 .floor-container {
   padding-left: 1rem;
   padding-right: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: .5rem;
 }
 
-.floor-hr {
-  height: 5px;
+.floor-base-line {
+  height: .3rem;
+  background: black;
+  flex-grow: 1;
 }
