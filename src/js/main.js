@@ -1,12 +1,14 @@
 "use strict";
 
-let numberOfFloors;
-let numberOfLifts;
+function main() {
+  let numberOfFloors;
+  let numberOfLifts;
 
-const rootElement = document.getElementById("root");
+  const rootElement = document.getElementById("root");
+  const divElement = document.createElement("div");
+  divElement.className = "parent-container";
 
-rootElement.innerHTML = `
-<div class=parent-container>
+  divElement.innerHTML = `
 <div class="child-container">
   <h1 class="heading">
     Lift Simulation
@@ -14,25 +16,49 @@ rootElement.innerHTML = `
   <div class="input-container">
     <div class="number-of-floors-container">
     <label for="number-of-floors">Enter number of floors: </label>
-    <input type="number" min="1" value=1 id="number-of-floors">
+    <input type="number" min="1" value=6 id="number-of-floors">
     </div>
     <div class="number-of-lifts-container">
     <label for="number-of-lifts">Enter number of lifts: </label>
-    <input type="number" min="1" value=1 id="number-of-lifts">
+    <input type="number" min="1" value=2 id="number-of-lifts">
     </div>
       <button id="simulate-button" class="simulate-button">Simulate</button>
   </div>
 </div>
-</div>
 `;
+  rootElement.append(divElement);
 
-function main(floors, lifts) {
-  rootElement.innerHTML = "";
+  function generateNav() {
+    rootElement.innerHTML = "";
+    const headerElement = document.createElement("header");
+    headerElement.innerHTML = `
+<nav class="nav">
+  <h1>Lift Simulation</h1>
+  <button class="configure-button">Configure</button>
+</nav>
+`;
+    rootElement.append(headerElement);
+  }
+
+  function generateFloorsLifts(floors, lifts) {
+    for (let i = floors; i >= 1; i--) {
+      const divElement = document.createElement("div");
+      divElement.className = "floor-container";
+      divElement.innerHTML = `
+  <h1 class="floor-heading">LEVEL ${i}</h1>
+  <hr class="floor-hr">
+`;
+      rootElement.append(divElement);
+    }
+  }
+
+  const submitButton = document.getElementById("simulate-button");
+  submitButton.addEventListener("click", (event) => {
+    numberOfFloors = document.getElementById("number-of-floors").value;
+    numberOfLifts = document.getElementById("number-of-lifts").value;
+    generateNav();
+    generateFloorsLifts(numberOfFloors, numberOfLifts);
+  });
 }
 
-const submitButton = document.getElementById("simulate-button");
-submitButton.addEventListener("click", (event) => {
-  numberOfFloors = document.getElementById("number-of-floors").value;
-  numberOfLifts = document.getElementById("number-of-lifts").value;
-  main(numberOfFloors, numberOfLifts);
-});
+main();

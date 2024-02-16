@@ -66,6 +66,11 @@ body {
   min-width: 375px;
 }
 
+.heading {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 .input-container {
   display: flex;
   flex-direction: column;
@@ -79,11 +84,29 @@ body {
   justify-content: space-between;
 }
 
-.heading {
-  text-align: center;
-  margin-bottom: 1rem;
+.simulate-button {
+  cursor: pointer;
 }
 
-.simuldate-button {
+.nav {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.configure-button {
   cursor: pointer;
+}
+
+.floor-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.floor-hr {
+  height: 5px;
 }
