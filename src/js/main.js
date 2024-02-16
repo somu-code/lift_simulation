@@ -45,8 +45,14 @@ function main() {
       const divElement = document.createElement("div");
       divElement.className = "floor-container";
       divElement.innerHTML = `
+  <div class="floor-button-container">
+  <button class="up-button">Up</button>
+  <button class="down-button">Down</button>
+  </div>
+  <div class="floor-base">
   <div class="floor-base-line"></div>
   <h1 class="floor-heading">Floor ${i}</h1>
+</div>
 `;
       rootElement.append(divElement);
     }
