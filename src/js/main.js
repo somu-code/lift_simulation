@@ -54,6 +54,13 @@ function main() {
   <h1 class="floor-heading">Floor ${i}</h1>
 </div>
 `;
+      if (i === 1) {
+        for (let j = 1; j <= lifts; j++) {
+          console.log("Lift number:", j);
+          const liftElement = document.createElement("div");
+          liftElement.className = "lift-container";
+        }
+      }
       rootElement.append(divElement);
     }
   }
