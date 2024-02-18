@@ -108,6 +108,10 @@ body {
   margin-top: 6rem;
 }
 
+.up-button {
+  margin-right: .6rem;
+}
+
 .up-button,
 .down-button {
   cursor: pointer;
@@ -137,7 +141,7 @@ body {
   gap: 1.5rem;
   position: absolute;
   bottom: 26px;
-  left: 150px;
+  left: 160px;
 }
 
 .lift-element {
