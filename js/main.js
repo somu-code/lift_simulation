@@ -46,10 +46,17 @@ function main() {
       floorElement.className = `floor-container floor-container-${i}`;
       const floorButtonElement = document.createElement("div");
       floorButtonElement.className = "floor-button-container";
-      floorButtonElement.innerHTML = `
-<button class="up-button">Up</button>
-<button class="down-button">Down</button>
-`;
+
+      const upButton = document.createElement("button");
+      upButton.className = "up-button";
+      upButton.id = `up-button-id-${i}`;
+      upButton.innerText = "Up";
+      floorButtonElement.append(upButton);
+      const downButton = document.createElement("button");
+      downButton.className = "down-button";
+      downButton.id = `down-button-id-${i}`;
+      downButton.innerText = "Down";
+      floorButtonElement.append(downButton);
       floorElement.append(floorButtonElement);
       const floorBase = document.createElement("div");
       floorBase.className = "floor-base";
