@@ -64,6 +64,7 @@ function main() {
         for (let j = 1; j <= lifts; j++) {
           const liftElement = document.createElement("div");
           liftElement.className = `lift-element lift-element-${j}`;
+          liftElement.id = `lift-id-${j}`;
           liftContainerElement.append(liftElement);
         }
         floorElement.append(liftContainerElement);
