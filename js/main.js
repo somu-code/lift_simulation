@@ -63,7 +63,7 @@ function main() {
         liftContainerElement.className = "lift-container";
         for (let j = 1; j <= lifts; j++) {
           const liftElement = document.createElement("div");
-          liftElement.className = "lift-element";
+          liftElement.className = `lift-element lift-element-${j}`;
           liftContainerElement.append(liftElement);
         }
         floorElement.append(liftContainerElement);
