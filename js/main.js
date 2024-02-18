@@ -6,6 +6,7 @@ function main() {
 
   const rootElement = document.getElementById("root");
   const divElement = document.createElement("div");
+
   divElement.className = "parent-container";
 
   divElement.innerHTML = `
@@ -26,6 +27,7 @@ function main() {
   </div>
 </div>
 `;
+
   rootElement.append(divElement);
 
   function generateNav() {
@@ -52,12 +54,15 @@ function main() {
       upButton.id = `up-button-id-${i}`;
       upButton.innerText = "Up";
       floorButtonElement.append(upButton);
+
       const downButton = document.createElement("button");
       downButton.className = "down-button";
       downButton.id = `down-button-id-${i}`;
       downButton.innerText = "Down";
       floorButtonElement.append(downButton);
+
       floorElement.append(floorButtonElement);
+
       const floorBase = document.createElement("div");
       floorBase.className = "floor-base";
       floorBase.innerHTML = `
