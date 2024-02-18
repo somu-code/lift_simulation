@@ -105,7 +105,7 @@ body {
 .floor-container {
   padding-left: 1rem;
   padding-right: 1rem;
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 
 .up-button,
@@ -125,4 +125,23 @@ body {
   height: .3rem;
   background: black;
   flex-grow: 1;
+}
+
+.floor-container-1 {
+  position: relative;
+}
+
+.lift-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  position: absolute;
+  bottom: 26px;
+  left: 150px;
+}
+
+.lift-element {
+  height: 100px;
+  width: 70px;
+  background-color: skyblue;
 }

@@ -42,33 +42,40 @@ function main() {
 
   function generateFloorsLifts(floors, lifts) {
     for (let i = floors; i >= 1; i--) {
-      const divElement = document.createElement("div");
-      divElement.className = "floor-container";
-      divElement.innerHTML = `
-  <div class="floor-button-container">
-  <button class="up-button">Up</button>
-  <button class="down-button">Down</button>
-  </div>
-  <div class="floor-base">
-  <div class="floor-base-line"></div>
-  <h1 class="floor-heading">Floor ${i}</h1>
-</div>
+      const floorElement = document.createElement("div");
+      floorElement.className = `floor-container floor-container-${i}`;
+      const floorButtonElement = document.createElement("div");
+      floorButtonElement.className = "floor-button-container";
+      floorButtonElement.innerHTML = `
+<button class="up-button">Up</button>
+<button class="down-button">Down</button>
 `;
+      floorElement.append(floorButtonElement);
+      const floorBase = document.createElement("div");
+      floorBase.className = "floor-base";
+      floorBase.innerHTML = `
+<div class="floor-base-line"></div>
+<h1 class="floor-heading">Floor ${i}</h1>
+`;
+      floorElement.append(floorBase);
       if (i === 1) {
+        const liftContainerElement = document.createElement("div");
+        liftContainerElement.className = "lift-container";
         for (let j = 1; j <= lifts; j++) {
-          console.log("Lift number:", j);
           const liftElement = document.createElement("div");
-          liftElement.className = "lift-container";
+          liftElement.className = "lift-element";
+          liftContainerElement.append(liftElement);
         }
+        floorElement.append(liftContainerElement);
       }
-      rootElement.append(divElement);
+      rootElement.append(floorElement);
     }
   }
 
   const submitButton = document.getElementById("simulate-button");
   submitButton.addEventListener("click", (event) => {
-    numberOfFloors = document.getElementById("number-of-floors").value;
-    numberOfLifts = document.getElementById("number-of-lifts").value;
+    numberOfFloors = parseInt(document.getElementById("number-of-floors").value);
+    numberOfLifts = parseInt(document.getElementById("number-of-lifts").value);
     generateNav();
     generateFloorsLifts(numberOfFloors, numberOfLifts);
   });
