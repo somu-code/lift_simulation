@@ -71,17 +71,25 @@ function main() {
 `;
       floorElement.append(floorBase);
       if (i === 1) {
-        const liftContainerElement = document.createElement("div");
-        liftContainerElement.className = "lift-container";
+        const liftContainerParentElement = document.createElement("div");
+        liftContainerParentElement.className = "lift-container-parent";
+        const liftContainerChildElement = document.createElement("div");
+        liftContainerChildElement.className = "lift-container-child";
         for (let j = 1; j <= lifts; j++) {
           const liftElement = document.createElement("div");
           liftElement.className = `lift-element lift-element-${j}`;
           liftElement.id = `lift-id-${j}`;
-          liftContainerElement.append(liftElement);
+          liftContainerChildElement.append(liftElement);
         }
-        floorElement.append(liftContainerElement);
+        liftContainerParentElement.append(liftContainerChildElement);
+        floorElement.append(liftContainerParentElement);
       }
       rootElement.append(floorElement);
+    }
+    for (let k = 1; k <= lifts; k++) {
+      const currentLift = document.getElementById(`lift-id-${k}`);
+      console.log(currentLift);
+      // currentLift.style.bottom = 200 + "px";
     }
   }
 
