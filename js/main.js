@@ -86,9 +86,9 @@ function main() {
       }
       rootElement.append(floorElement);
     }
-    for (let k = 1; k <= lifts; k++) {
-      const currentLift = document.getElementById(`lift-id-${k}`);
-      console.log(currentLift);
+    for (let k = 1; k <= floors; k++) {
+      const currentUpButton = document.getElementById(`up-button-id-${k}`);
+      const currentDownButton = document.getElementById(`down-button-id-${k}`);
       // currentLift.style.bottom = 200 + "px";
     }
   }
@@ -99,6 +99,18 @@ function main() {
     numberOfLifts = parseInt(document.getElementById("number-of-lifts").value);
     generateNav();
     generateFloorsLifts(numberOfFloors, numberOfLifts);
+    const upButtons = document.querySelectorAll(".up-button");
+    upButtons.forEach(upButton => {
+      upButton.addEventListener("click", event => {
+        console.log(upButton);
+      })
+    })
+    const downButtons = document.querySelectorAll(".down-button");
+    downButtons.forEach(downButton => {
+      downButton.addEventListener("click", event => {
+        console.log(downButton);
+      })
+    })
   });
 }
 
