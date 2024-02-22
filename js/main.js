@@ -73,15 +73,15 @@ function main() {
       if (i === 1) {
         const liftContainerParentElement = document.createElement("div");
         liftContainerParentElement.className = "lift-container-parent";
-        const liftContainerChildElement = document.createElement("div");
-        liftContainerChildElement.className = "lift-container-child";
+        // const liftContainerChildElement = document.createElement("div");
+        // liftContainerChildElement.className = "lift-container-child";
         for (let j = 1; j <= lifts; j++) {
           const liftElement = document.createElement("div");
           liftElement.className = `lift-element lift-element-${j}`;
           liftElement.id = `lift-id-${j}`;
-          liftContainerChildElement.append(liftElement);
+          liftContainerParentElement.append(liftElement);
         }
-        liftContainerParentElement.append(liftContainerChildElement);
+        // liftContainerParentElement.append(liftContainerChildElement);
         floorElement.append(liftContainerParentElement);
       }
       rootElement.append(floorElement);

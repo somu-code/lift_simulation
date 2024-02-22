@@ -139,18 +139,20 @@ body {
   position: absolute;
   bottom: 26px;
   left: 160px;
-}
-
-.lift-container-child {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
-  position: relative;
 }
+
+/* .lift-container-child { */
+/*   display: flex; */
+/*   flex-direction: row; */
+/*   gap: 1.5rem; */
+/*   position: relative; */
+/* } */
 
 .lift-element {
   height: 100px;
   width: 70px;
   background-color: skyblue;
-  /* position: absolute; */
 }
