@@ -3,6 +3,7 @@
 function main() {
   let numberOfFloors;
   let numberOfLifts;
+  const liftsState = [];
 
   const rootElement = document.getElementById("root");
   const divElement = document.createElement("div");
@@ -78,6 +79,7 @@ function main() {
           liftElement.className = `lift-element lift-element-${j}`;
           liftElement.id = `lift-id-${j}`;
           liftContainerParentElement.append(liftElement);
+          liftsState[j - 1] = { "liftId": liftElement.id, "isRunning": false, "currentFloor": i };
         }
         floorElement.append(liftContainerParentElement);
       }
@@ -94,8 +96,22 @@ function main() {
     const upButtons = document.querySelectorAll(".up-button");
     upButtons.forEach(upButton => {
       upButton.addEventListener("click", event => {
-        const floorsToMove = upButton.id[4];
-        console.log(floorsToMove);
+        const upButtonId = upButton.id;
+        const floorsToMoveUp = parseInt(upButtonId[13]);
+        for (let i = 0; i < liftsState.length; i++) {
+          if (liftsState[i].isRunning === false) {
+            liftsState[i].isRunning = true;
+            const currentLift = document.getElementById(liftsState[i].liftId);
+            currentLift.style.transition = `bottom ${2 * (floorsToMoveUp - 1)}s linear`;
+            currentLift.style.bottom = `${174 * (floorsToMoveUp - 1)}px`;
+            liftsState[i].currentFloor = floorsToMoveUp;
+            liftsState[i].isRunning = false;
+            console.log(liftsState);
+            break;
+          } else {
+            continue
+          }
+        }
       })
     })
     const downButtons = document.querySelectorAll(".down-button");
