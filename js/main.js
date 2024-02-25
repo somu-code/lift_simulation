@@ -117,7 +117,22 @@ function main() {
     const downButtons = document.querySelectorAll(".down-button");
     downButtons.forEach(downButton => {
       downButton.addEventListener("click", event => {
-        console.log(downButton);
+        const downButtonId = downButton.id;
+        const floorNumber = parseInt(downButtonId.split("-")[3]);
+        for (let i = 0; i < liftsState.length; i++) {
+          if (liftsState[i].isRunning === false) {
+            liftsState[i].isRunning = true;
+            const currentLift = document.getElementById(liftsState[i].liftId);
+            const floorsToGoDown = liftsState[i].currentFloor - floorNumber;
+            if (floorsToGoDown < 0) {
+              continue;
+            }
+            currentLift.style.transition = `top ${2 * floorsToGoDown}s linear`;
+            currentLift.style.top = `${174 * floorsToGoDown}px`;
+            console.log(currentLift);
+            liftsState[i].isRunning = false;
+          }
+        }
       })
     })
   });
