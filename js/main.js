@@ -73,23 +73,15 @@ function main() {
       if (i === 1) {
         const liftContainerParentElement = document.createElement("div");
         liftContainerParentElement.className = "lift-container-parent";
-        // const liftContainerChildElement = document.createElement("div");
-        // liftContainerChildElement.className = "lift-container-child";
         for (let j = 1; j <= lifts; j++) {
           const liftElement = document.createElement("div");
           liftElement.className = `lift-element lift-element-${j}`;
           liftElement.id = `lift-id-${j}`;
           liftContainerParentElement.append(liftElement);
         }
-        // liftContainerParentElement.append(liftContainerChildElement);
         floorElement.append(liftContainerParentElement);
       }
       rootElement.append(floorElement);
-    }
-    for (let k = 1; k <= floors; k++) {
-      const currentUpButton = document.getElementById(`up-button-id-${k}`);
-      const currentDownButton = document.getElementById(`down-button-id-${k}`);
-      // currentLift.style.bottom = 200 + "px";
     }
   }
 
@@ -102,7 +94,8 @@ function main() {
     const upButtons = document.querySelectorAll(".up-button");
     upButtons.forEach(upButton => {
       upButton.addEventListener("click", event => {
-        console.log(upButton);
+        const floorsToMove = upButton.id[4];
+        console.log(floorsToMove);
       })
     })
     const downButtons = document.querySelectorAll(".down-button");
