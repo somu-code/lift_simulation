@@ -97,14 +97,14 @@ function main() {
     upButtons.forEach(upButton => {
       upButton.addEventListener("click", event => {
         const upButtonId = upButton.id;
-        const floorsToMoveUp = parseInt(upButtonId[13]);
+        const floorNumber = parseInt(upButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
           if (liftsState[i].isRunning === false) {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
-            currentLift.style.transition = `bottom ${2 * (floorsToMoveUp - 1)}s linear`;
-            currentLift.style.bottom = `${174 * (floorsToMoveUp - 1)}px`;
-            liftsState[i].currentFloor = floorsToMoveUp;
+            currentLift.style.transition = `bottom ${2 * (floorNumber - 1)}s linear`;
+            currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
+            liftsState[i].currentFloor = floorNumber;
             liftsState[i].isRunning = false;
             console.log(liftsState);
             break;
