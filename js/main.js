@@ -108,8 +108,11 @@ function main() {
             const currentLift = document.getElementById(liftsState[i].liftId);
             currentLift.style.transition = `bottom ${2 * floorNumber}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            liftsState[i].currentFloor = floorNumber;
-            liftsState[i].isRunning = false;
+            currentLift.addEventListener("transitionend", event => {
+              console.log("Transition ended");
+              liftsState[i].currentFloor = floorNumber;
+              liftsState[i].isRunning = false;
+            })
             break;
           }
         }
@@ -126,8 +129,11 @@ function main() {
             const currentLift = document.getElementById(liftsState[i].liftId);
             currentLift.style.transition = `bottom ${2 * floorNumber}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            liftsState[i].currentFloor = floorNumber;
-            liftsState[i].isRunning = false;
+            currentLift.addEventListener("Transitionend ened", _event => {
+              console.log("transitionend");
+              liftsState[i].currentFloor = floorNumber;
+              liftsState[i].isRunning = false;
+            })
             break;
           }
         }
