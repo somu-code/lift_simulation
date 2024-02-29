@@ -107,7 +107,6 @@ function main() {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
             const transitionDuration = Math.abs(floorNumber - liftsState[i].currentFloor);
-            console.log("up", transitionDuration);
             currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", _event => {
@@ -129,10 +128,9 @@ function main() {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
             const transitionDuration = Math.abs(floorNumber - liftsState[i].currentFloor);
-            currentLift.style.transition = `bottom ${2 * floorNumber}s linear`;
-            console.log(transitionDuration);
-            currentLift.style.bottom = `${174 * transitionDuration}px`;
-            currentLift.addEventListener("Transitionend ened", _event => {
+            currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
+            currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
+            currentLift.addEventListener("transitionend", _event => {
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             })
