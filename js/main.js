@@ -107,7 +107,7 @@ function main() {
     generateFloorsLifts(numberOfFloors, numberOfLifts);
     const upButtons = document.querySelectorAll(".up-button");
     upButtons.forEach(upButton => {
-      upButton.addEventListener("click", event => {
+      upButton.addEventListener("click", _event => {
         const upButtonId = upButton.id;
         const floorNumber = parseInt(upButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
@@ -119,9 +119,13 @@ function main() {
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", _event => {
               const upLeftDoor = document.querySelector(`#${liftsState[i].liftId} .leftDoor`);
-              upLeftDoor.style.backgroundColor = "#d4d4d4";
+              upLeftDoor.style.transform = "translateX(-100%)";
+              upLeftDoor.addEventListener("transitionend", _event => {
+                console.log("running")
+                upLeftDoor.style.transform = "translateX(0)";
+              })
               const upRightDoor = document.querySelector(`#${liftsState[i].liftId} .rightDoor`);
-              upRightDoor.style.backgroundColor = "#d4d4d4";
+              upRightDoor.style.transform = "translateX(100%)";
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             })
@@ -132,7 +136,7 @@ function main() {
     })
     const downButtons = document.querySelectorAll(".down-button");
     downButtons.forEach(downButton => {
-      downButton.addEventListener("click", event => {
+      downButton.addEventListener("click", _event => {
         const downButtonId = downButton.id;
         const floorNumber = parseInt(downButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
@@ -144,9 +148,9 @@ function main() {
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", _event => {
               const downLeftDoor = document.querySelector(`#${liftsState[i].liftId} .leftDoor`);
-              downLeftDoor.style.backgroundColor = "#d4d4d4";
+              downLeftDoor.style.transform = "translateX(-100%)";
               const downRightDoor = document.querySelector(`#${liftsState[i].liftId} .rightDoor`);
-              downRightDoor.style.backgroundColor = "#d4d4d4";
+              downRightDoor.style.transform = "translate(100%)";
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             })
