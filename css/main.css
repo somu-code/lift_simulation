@@ -147,7 +147,7 @@ body {
 .lift-element {
   height: 100px;
   width: 70px;
-  background-color: skyblue;
+  background-color: #d4d4d4;
   position: relative;
   bottom: 0;
   display: flex;
@@ -158,7 +158,8 @@ body {
 .rightDoor {
   width: 50%;
   height: 100%;
-  background-color: gray;
+  background-color: #5e5c64;
+  transition: background-color 2.5s linear;
 }
 
 .leftDoor {

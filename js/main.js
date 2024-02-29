@@ -118,6 +118,10 @@ function main() {
             currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", _event => {
+              const leftDoor = document.querySelector(".leftDoor");
+              console.log(leftDoor);
+              leftDoor.style.backgroundColor = "#d4d4d4";
+              const rightDoor = document.querySelector(".rightDoor");
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             })
