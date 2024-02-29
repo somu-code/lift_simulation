@@ -79,7 +79,11 @@ function main() {
           liftElement.className = `lift-element lift-element-${j}`;
           liftElement.id = `lift-id-${j}`;
           liftContainerParentElement.append(liftElement);
-          liftsState[j - 1] = { "liftId": liftElement.id, "isRunning": false, "currentFloor": i };
+          liftsState[j - 1] = {
+            liftId: liftElement.id,
+            isRunning: false,
+            currentFloor: i,
+          };
 
           const leftDoor = document.createElement("div");
           leftDoor.className = "leftDoor";
@@ -97,68 +101,87 @@ function main() {
 
   const submitButton = document.getElementById("simulate-button");
   submitButton.addEventListener("click", (event) => {
-    numberOfFloors = parseInt(document.getElementById("number-of-floors").value);
+    numberOfFloors = parseInt(
+      document.getElementById("number-of-floors").value
+    );
     numberOfLifts = parseInt(document.getElementById("number-of-lifts").value);
     generateNav();
     const configureButton = document.getElementById("configure-button");
-    configureButton.addEventListener("click", _event => {
+    configureButton.addEventListener("click", (_event) => {
       location.reload();
-    })
+    });
     generateFloorsLifts(numberOfFloors, numberOfLifts);
     const upButtons = document.querySelectorAll(".up-button");
-    upButtons.forEach(upButton => {
-      upButton.addEventListener("click", _event => {
+    upButtons.forEach((upButton) => {
+      upButton.addEventListener("click", (_event) => {
         const upButtonId = upButton.id;
         const floorNumber = parseInt(upButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
           if (liftsState[i].isRunning === false) {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
-            const transitionDuration = Math.abs(floorNumber - liftsState[i].currentFloor);
-            currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
+            const transitionDuration = Math.abs(
+              floorNumber - liftsState[i].currentFloor
+            );
+            currentLift.style.transition = `bottom ${
+              2 * transitionDuration
+            }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            currentLift.addEventListener("transitionend", _event => {
-              const upLeftDoor = document.querySelector(`#${liftsState[i].liftId} .leftDoor`);
+            currentLift.addEventListener("transitionend", (_event) => {
+              const upLeftDoor = document.querySelector(
+                `#${liftsState[i].liftId} .leftDoor`
+              );
+              upLeftDoor.style.transform = "translateX(0)";
               upLeftDoor.style.transform = "translateX(-100%)";
-              upLeftDoor.addEventListener("transitionend", _event => {
-                console.log("running")
+              upLeftDoor.addEventListener("transitionend", (_event) => {
+                console.log("running");
                 upLeftDoor.style.transform = "translateX(0)";
-              })
-              const upRightDoor = document.querySelector(`#${liftsState[i].liftId} .rightDoor`);
+              });
+              const upRightDoor = document.querySelector(
+                `#${liftsState[i].liftId} .rightDoor`
+              );
               upRightDoor.style.transform = "translateX(100%)";
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
-            })
+            });
             break;
           }
         }
-      })
-    })
+      });
+    });
     const downButtons = document.querySelectorAll(".down-button");
-    downButtons.forEach(downButton => {
-      downButton.addEventListener("click", _event => {
+    downButtons.forEach((downButton) => {
+      downButton.addEventListener("click", (_event) => {
         const downButtonId = downButton.id;
         const floorNumber = parseInt(downButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
           if (liftsState[i].isRunning === false) {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
-            const transitionDuration = Math.abs(floorNumber - liftsState[i].currentFloor);
-            currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
+            const transitionDuration = Math.abs(
+              floorNumber - liftsState[i].currentFloor
+            );
+            currentLift.style.transition = `bottom ${
+              2 * transitionDuration
+            }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            currentLift.addEventListener("transitionend", _event => {
-              const downLeftDoor = document.querySelector(`#${liftsState[i].liftId} .leftDoor`);
+            currentLift.addEventListener("transitionend", (_event) => {
+              const downLeftDoor = document.querySelector(
+                `#${liftsState[i].liftId} .leftDoor`
+              );
               downLeftDoor.style.transform = "translateX(-100%)";
-              const downRightDoor = document.querySelector(`#${liftsState[i].liftId} .rightDoor`);
+              const downRightDoor = document.querySelector(
+                `#${liftsState[i].liftId} .rightDoor`
+              );
               downRightDoor.style.transform = "translate(100%)";
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
-            })
+            });
             break;
           }
         }
-      })
-    })
+      });
+    });
   });
 }
 
