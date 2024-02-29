@@ -150,4 +150,21 @@ body {
   background-color: skyblue;
   position: relative;
   bottom: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftDoor,
+.rightDoor {
+  width: 50%;
+  height: 100%;
+  background-color: gray;
+}
+
+.leftDoor {
+  border-right: 1px solid black;
+}
+
+.rightDoor {
+  border-left: 1px solid black;
 }

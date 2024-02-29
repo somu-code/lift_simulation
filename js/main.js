@@ -80,6 +80,14 @@ function main() {
           liftElement.id = `lift-id-${j}`;
           liftContainerParentElement.append(liftElement);
           liftsState[j - 1] = { "liftId": liftElement.id, "isRunning": false, "currentFloor": i };
+
+          const leftDoor = document.createElement("div");
+          leftDoor.className = "leftDoor";
+          liftElement.append(leftDoor);
+
+          const rightDoor = document.createElement("div");
+          rightDoor.className = "rightDoor";
+          liftElement.append(rightDoor);
         }
         floorElement.append(liftContainerParentElement);
       }
