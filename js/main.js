@@ -118,10 +118,10 @@ function main() {
             currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", _event => {
-              const leftDoor = document.querySelector(".leftDoor");
-              console.log(leftDoor);
-              leftDoor.style.backgroundColor = "#d4d4d4";
-              const rightDoor = document.querySelector(".rightDoor");
+              const upLeftDoor = document.querySelector(`#${liftsState[i].liftId} .leftDoor`);
+              upLeftDoor.style.backgroundColor = "#d4d4d4";
+              const upRightDoor = document.querySelector(`#${liftsState[i].liftId} .rightDoor`);
+              upRightDoor.style.backgroundColor = "#d4d4d4";
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             })
@@ -143,6 +143,10 @@ function main() {
             currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", _event => {
+              const downLeftDoor = document.querySelector(`#${liftsState[i].liftId} .leftDoor`);
+              downLeftDoor.style.backgroundColor = "#d4d4d4";
+              const downRightDoor = document.querySelector(`#${liftsState[i].liftId} .rightDoor`);
+              downRightDoor.style.backgroundColor = "#d4d4d4";
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             })
