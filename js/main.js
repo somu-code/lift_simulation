@@ -37,7 +37,7 @@ function main() {
     headerElement.innerHTML = `
 <nav class="nav">
   <h1>Lift Simulation</h1>
-  <button class="configure-button">Configure</button>
+  <button class="configure-button" id="configure-button">Configure</button>
 </nav>
 `;
     rootElement.append(headerElement);
@@ -92,6 +92,10 @@ function main() {
     numberOfFloors = parseInt(document.getElementById("number-of-floors").value);
     numberOfLifts = parseInt(document.getElementById("number-of-lifts").value);
     generateNav();
+    const configureButton = document.getElementById("configure-button");
+    configureButton.addEventListener("click", _event => {
+      location.reload();
+    })
     generateFloorsLifts(numberOfFloors, numberOfLifts);
     const upButtons = document.querySelectorAll(".up-button");
     upButtons.forEach(upButton => {
@@ -104,7 +108,6 @@ function main() {
             const currentLift = document.getElementById(liftsState[i].liftId);
             currentLift.style.transition = `bottom ${2 * floorNumber}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            console.log(currentLift);
             liftsState[i].currentFloor = floorNumber;
             liftsState[i].isRunning = false;
             break;
@@ -123,7 +126,6 @@ function main() {
             const currentLift = document.getElementById(liftsState[i].liftId);
             currentLift.style.transition = `bottom ${2 * floorNumber}s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            console.log(currentLift);
             liftsState[i].currentFloor = floorNumber;
             liftsState[i].isRunning = false;
             break;
