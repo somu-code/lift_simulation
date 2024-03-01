@@ -172,12 +172,12 @@ body {
 
 .rightDoorAnimation {
   animation-name: doorAnimation;
-  animation-duration: 3s;
+  animation-duration: 5s;
 }
 
 .leftDoorAnimation {
   animation-name: doorAnimation;
-  animation-duration: 3s;
+  animation-duration: 5s;
 }
 
 @keyframes doorAnimation {

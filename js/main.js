@@ -49,12 +49,16 @@ function main() {
         const upButtonId = upButton.id;
         const floorNumber = parseInt(upButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
+          if (floorNumber === liftsState[i].currentFloor) return;
+        }
+        for (let i = 0; i < liftsState.length; i++) {
           if (liftsState[i].isRunning === false) {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
             const transitionDuration = Math.abs(
               floorNumber - liftsState[i].currentFloor,
             );
+            liftsState[i].currentFloor = floorNumber;
             currentLift.style.transition = `bottom ${2 * transitionDuration
               }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
@@ -63,17 +67,14 @@ function main() {
                 `#${liftsState[i].liftId} .leftDoor`,
               );
               upLeftDoor.classList.add("leftDoorAnimation");
-              console.log(upLeftDoor);
               const upRightDoor = document.querySelector(
                 `#${liftsState[i].liftId} .rightDoor`,
               );
               upRightDoor.classList.add("rightDoorAnimation");
-              console.log(upRightDoor);
               setTimeout(() => {
                 upLeftDoor.classList.remove("leftDoorAnimation");
                 upRightDoor.classList.remove("rightDoorAnimation");
-              }, 3000);
-              liftsState[i].currentFloor = floorNumber;
+              }, 5000);
               liftsState[i].isRunning = false;
             });
             break;
@@ -87,12 +88,16 @@ function main() {
         const downButtonId = downButton.id;
         const floorNumber = parseInt(downButtonId.split("-")[3]);
         for (let i = 0; i < liftsState.length; i++) {
+          if (floorNumber === liftsState[i].currentFloor) return;
+        }
+        for (let i = 0; i < liftsState.length; i++) {
           if (liftsState[i].isRunning === false) {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
             const transitionDuration = Math.abs(
               floorNumber - liftsState[i].currentFloor,
             );
+            liftsState[i].currentFloor = floorNumber;
             currentLift.style.transition = `bottom ${2 * transitionDuration
               }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
@@ -100,12 +105,15 @@ function main() {
               const downLeftDoor = document.querySelector(
                 `#${liftsState[i].liftId} .leftDoor`,
               );
-              downLeftDoor.style.transform = "translateX(-100%)";
+              downLeftDoor.classList.add("leftDoorAnimation");
               const downRightDoor = document.querySelector(
                 `#${liftsState[i].liftId} .rightDoor`,
               );
-              downRightDoor.style.transform = "translate(100%)";
-              liftsState[i].currentFloor = floorNumber;
+              downRightDoor.classList.add("rightDoorAnimation");
+              setTimeout(() => {
+                downLeftDoor.classList.remove("leftDoorAnimation");
+                downRightDoor.classList.remove("rightDoorAnimation");
+              })
               liftsState[i].isRunning = false;
             });
             break;
