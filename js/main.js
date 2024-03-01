@@ -86,11 +86,11 @@ function main() {
           };
 
           const leftDoor = document.createElement("div");
-          leftDoor.className = "leftDoor";
+          leftDoor.className = "door leftDoor";
           liftElement.append(leftDoor);
 
           const rightDoor = document.createElement("div");
-          rightDoor.className = "rightDoor";
+          rightDoor.className = "door rightDoor";
           liftElement.append(rightDoor);
         }
         floorElement.append(liftContainerParentElement);
@@ -100,7 +100,7 @@ function main() {
   }
 
   const submitButton = document.getElementById("simulate-button");
-  submitButton.addEventListener("click", (event) => {
+  submitButton.addEventListener("click", (_event) => {
     numberOfFloors = parseInt(
       document.getElementById("number-of-floors").value
     );
