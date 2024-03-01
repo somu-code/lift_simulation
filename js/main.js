@@ -123,9 +123,8 @@ function main() {
             const transitionDuration = Math.abs(
               floorNumber - liftsState[i].currentFloor
             );
-            currentLift.style.transition = `bottom ${
-              2 * transitionDuration
-            }s linear`;
+            currentLift.style.transition = `bottom ${2 * transitionDuration
+              }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", (_event) => {
               const upLeftDoor = document.querySelector(
@@ -134,7 +133,6 @@ function main() {
               upLeftDoor.style.transform = "translateX(0)";
               upLeftDoor.style.transform = "translateX(-100%)";
               upLeftDoor.addEventListener("transitionend", (_event) => {
-                console.log("running");
                 upLeftDoor.style.transform = "translateX(0)";
               });
               const upRightDoor = document.querySelector(
@@ -161,9 +159,8 @@ function main() {
             const transitionDuration = Math.abs(
               floorNumber - liftsState[i].currentFloor
             );
-            currentLift.style.transition = `bottom ${
-              2 * transitionDuration
-            }s linear`;
+            currentLift.style.transition = `bottom ${2 * transitionDuration
+              }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", (_event) => {
               const downLeftDoor = document.querySelector(
