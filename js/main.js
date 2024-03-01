@@ -1,5 +1,4 @@
 "use strict";
-console.log("hello");
 
 import { generateNav, generateFloorsLifts } from "./controller.js";
 
@@ -58,9 +57,8 @@ function main() {
             const transitionDuration = Math.abs(
               floorNumber - liftsState[i].currentFloor,
             );
-            currentLift.style.transition = `bottom ${
-              2 * transitionDuration
-            }s linear`;
+            currentLift.style.transition = `bottom ${2 * transitionDuration
+              }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", (_event) => {
               const upLeftDoor = document.querySelector(
@@ -95,9 +93,8 @@ function main() {
             const transitionDuration = Math.abs(
               floorNumber - liftsState[i].currentFloor,
             );
-            currentLift.style.transition = `bottom ${
-              2 * transitionDuration
-            }s linear`;
+            currentLift.style.transition = `bottom ${2 * transitionDuration
+              }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", (_event) => {
               const downLeftDoor = document.querySelector(

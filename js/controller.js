@@ -65,3 +65,21 @@ export function generateFloorsLifts(rootElement, liftsState, floors, lifts) {
     rootElement.append(floorElement);
   }
 }
+
+export function simulate(buttonId, liftsState) {
+  console.log(buttonId);
+  console.log(liftsState);
+  const floorNumber = parseInt(buttonId.split("-")[3]);
+  for (let i = 0; i < liftsState.length; i++) {
+    if (liftsState[i].isRunning === false) {
+      liftsState[i].isRunning = true;
+      const currentLift = document.getElementById(liftsState[i].liftId);
+      const transitionDuration = Math.abs(floorNumber - liftsState[i].currentFloor);
+      currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
+      currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
+      liftsState[i].currentFloor = floorNumber;
+      liftsState[i].isRunning = false;
+      break;
+    }
+  }
+}
