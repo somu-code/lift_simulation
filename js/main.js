@@ -62,15 +62,17 @@ function main() {
               const upLeftDoor = document.querySelector(
                 `#${liftsState[i].liftId} .leftDoor`,
               );
-              upLeftDoor.style.transform = "translateX(0)";
-              upLeftDoor.style.transform = "translateX(-100%)";
-              upLeftDoor.addEventListener("transitionend", (_event) => {
-                upLeftDoor.style.transform = "translateX(0)";
-              });
+              upLeftDoor.classList.add("leftDoorAnimation");
+              console.log(upLeftDoor);
               const upRightDoor = document.querySelector(
                 `#${liftsState[i].liftId} .rightDoor`,
               );
-              upRightDoor.style.transform = "translateX(100%)";
+              upRightDoor.classList.add("rightDoorAnimation");
+              console.log(upRightDoor);
+              setTimeout(() => {
+                upLeftDoor.classList.remove("leftDoorAnimation");
+                upRightDoor.classList.remove("rightDoorAnimation");
+              }, 3000);
               liftsState[i].currentFloor = floorNumber;
               liftsState[i].isRunning = false;
             });
