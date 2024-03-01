@@ -37,7 +37,7 @@ function main() {
   const submitButton = document.getElementById("simulate-button");
   submitButton.addEventListener("click", (_event) => {
     numberOfFloors = parseInt(
-      document.getElementById("number-of-floors").value
+      document.getElementById("number-of-floors").value,
     );
     numberOfLifts = parseInt(document.getElementById("number-of-lifts").value);
     generateNav(rootElement);
@@ -56,14 +56,15 @@ function main() {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
             const transitionDuration = Math.abs(
-              floorNumber - liftsState[i].currentFloor
+              floorNumber - liftsState[i].currentFloor,
             );
-            currentLift.style.transition = `bottom ${2 * transitionDuration
-              }s linear`;
+            currentLift.style.transition = `bottom ${
+              2 * transitionDuration
+            }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", (_event) => {
               const upLeftDoor = document.querySelector(
-                `#${liftsState[i].liftId} .leftDoor`
+                `#${liftsState[i].liftId} .leftDoor`,
               );
               upLeftDoor.style.transform = "translateX(0)";
               upLeftDoor.style.transform = "translateX(-100%)";
@@ -71,7 +72,7 @@ function main() {
                 upLeftDoor.style.transform = "translateX(0)";
               });
               const upRightDoor = document.querySelector(
-                `#${liftsState[i].liftId} .rightDoor`
+                `#${liftsState[i].liftId} .rightDoor`,
               );
               upRightDoor.style.transform = "translateX(100%)";
               liftsState[i].currentFloor = floorNumber;
@@ -92,18 +93,19 @@ function main() {
             liftsState[i].isRunning = true;
             const currentLift = document.getElementById(liftsState[i].liftId);
             const transitionDuration = Math.abs(
-              floorNumber - liftsState[i].currentFloor
+              floorNumber - liftsState[i].currentFloor,
             );
-            currentLift.style.transition = `bottom ${2 * transitionDuration
-              }s linear`;
+            currentLift.style.transition = `bottom ${
+              2 * transitionDuration
+            }s linear`;
             currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
             currentLift.addEventListener("transitionend", (_event) => {
               const downLeftDoor = document.querySelector(
-                `#${liftsState[i].liftId} .leftDoor`
+                `#${liftsState[i].liftId} .leftDoor`,
               );
               downLeftDoor.style.transform = "translateX(-100%)";
               const downRightDoor = document.querySelector(
-                `#${liftsState[i].liftId} .rightDoor`
+                `#${liftsState[i].liftId} .rightDoor`,
               );
               downRightDoor.style.transform = "translate(100%)";
               liftsState[i].currentFloor = floorNumber;

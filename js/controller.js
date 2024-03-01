@@ -8,7 +8,7 @@ export function generateNav(rootElement) {
 </nav>
 `;
   rootElement.append(headerElement);
-};
+}
 
 export function generateFloorsLifts(rootElement, liftsState, floors, lifts) {
   for (let i = floors; i >= 1; i--) {
@@ -64,4 +64,4 @@ export function generateFloorsLifts(rootElement, liftsState, floors, lifts) {
     }
     rootElement.append(floorElement);
   }
-};
+}
