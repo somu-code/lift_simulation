@@ -113,7 +113,7 @@ function main() {
               setTimeout(() => {
                 downLeftDoor.classList.remove("leftDoorAnimation");
                 downRightDoor.classList.remove("rightDoorAnimation");
-              })
+              }, 5000)
               liftsState[i].isRunning = false;
             });
             break;
