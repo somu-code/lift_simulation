@@ -18,11 +18,11 @@ function main() {
   <div class="input-container">
     <div class="number-of-floors-container">
     <label for="number-of-floors">Enter number of floors: </label>
-    <input type="number" min="1" value=6 id="number-of-floors">
+    <input type="number" min="1" value=15 id="number-of-floors">
     </div>
     <div class="number-of-lifts-container">
     <label for="number-of-lifts">Enter number of lifts: </label>
-    <input type="number" min="1" value=2 id="number-of-lifts">
+    <input type="number" min="1" value=5 id="number-of-lifts">
     </div>
       <button id="simulate-button" class="simulate-button">Simulate</button>
   </div>
@@ -74,8 +74,8 @@ function main() {
               setTimeout(() => {
                 upLeftDoor.classList.remove("leftDoorAnimation");
                 upRightDoor.classList.remove("rightDoorAnimation");
+                liftsState[i].isRunning = false;
               }, 5000);
-              liftsState[i].isRunning = false;
             });
             break;
           }
@@ -113,8 +113,8 @@ function main() {
               setTimeout(() => {
                 downLeftDoor.classList.remove("leftDoorAnimation");
                 downRightDoor.classList.remove("rightDoorAnimation");
+                liftsState[i].isRunning = false;
               }, 5000)
-              liftsState[i].isRunning = false;
             });
             break;
           }
