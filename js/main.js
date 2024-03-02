@@ -1,5 +1,7 @@
 "use strict";
 
+const doorAnimationDuration = 5000;
+
 function main() {
   let numberOfFloors;
   let numberOfLifts;
@@ -74,7 +76,7 @@ function main() {
                 upLeftDoor.classList.remove("leftDoorAnimation");
                 upRightDoor.classList.remove("rightDoorAnimation");
                 liftsState[i].isRunning = false;
-              }, 5000);
+              }, doorAnimationDuration);
             });
             break;
           }
@@ -112,7 +114,7 @@ function main() {
                 downLeftDoor.classList.remove("leftDoorAnimation");
                 downRightDoor.classList.remove("rightDoorAnimation");
                 liftsState[i].isRunning = false;
-              }, 5000)
+              }, doorAnimationDuration)
             });
             break;
           }
