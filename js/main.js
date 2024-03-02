@@ -48,77 +48,13 @@ function main() {
     const upButtons = document.querySelectorAll(".up-button");
     upButtons.forEach((upButton) => {
       upButton.addEventListener("click", (_event) => {
-        const upButtonId = upButton.id;
-        const floorNumber = parseInt(upButtonId.split("-")[3]);
-        for (let i = 0; i < liftsState.length; i++) {
-          if (floorNumber === liftsState[i].currentFloor) return;
-        }
-        for (let i = 0; i < liftsState.length; i++) {
-          if (liftsState[i].isRunning === false) {
-            liftsState[i].isRunning = true;
-            const currentLift = document.getElementById(liftsState[i].liftId);
-            const transitionDuration = Math.abs(
-              floorNumber - liftsState[i].currentFloor,
-            ) * 2;
-            liftsState[i].currentFloor = floorNumber;
-            currentLift.style.transition = `bottom ${transitionDuration}s linear`;
-            currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            currentLift.addEventListener("transitionend", (_event) => {
-              const upLeftDoor = document.querySelector(
-                `#${liftsState[i].liftId} .leftDoor`,
-              );
-              upLeftDoor.classList.add("leftDoorAnimation");
-              const upRightDoor = document.querySelector(
-                `#${liftsState[i].liftId} .rightDoor`,
-              );
-              upRightDoor.classList.add("rightDoorAnimation");
-              setTimeout(() => {
-                upLeftDoor.classList.remove("leftDoorAnimation");
-                upRightDoor.classList.remove("rightDoorAnimation");
-                liftsState[i].isRunning = false;
-              }, doorAnimationDuration);
-            });
-            break;
-          }
-        }
+        handleFloorButtonClick(upButton, liftsState);
       });
     });
     const downButtons = document.querySelectorAll(".down-button");
     downButtons.forEach((downButton) => {
       downButton.addEventListener("click", (_event) => {
-        const downButtonId = downButton.id;
-        const floorNumber = parseInt(downButtonId.split("-")[3]);
-        for (let i = 0; i < liftsState.length; i++) {
-          if (floorNumber === liftsState[i].currentFloor) return;
-        }
-        for (let i = 0; i < liftsState.length; i++) {
-          if (liftsState[i].isRunning === false) {
-            liftsState[i].isRunning = true;
-            const currentLift = document.getElementById(liftsState[i].liftId);
-            const transitionDuration = Math.abs(
-              floorNumber - liftsState[i].currentFloor,
-            ) * 2;
-            liftsState[i].currentFloor = floorNumber;
-            currentLift.style.transition = `bottom ${transitionDuration}s linear`;
-            currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
-            currentLift.addEventListener("transitionend", (_event) => {
-              const downLeftDoor = document.querySelector(
-                `#${liftsState[i].liftId} .leftDoor`,
-              );
-              downLeftDoor.classList.add("leftDoorAnimation");
-              const downRightDoor = document.querySelector(
-                `#${liftsState[i].liftId} .rightDoor`,
-              );
-              downRightDoor.classList.add("rightDoorAnimation");
-              setTimeout(() => {
-                downLeftDoor.classList.remove("leftDoorAnimation");
-                downRightDoor.classList.remove("rightDoorAnimation");
-                liftsState[i].isRunning = false;
-              }, doorAnimationDuration)
-            });
-            break;
-          }
-        }
+        handleFloorButtonClick(downButton, liftsState);
       });
     });
   });
@@ -194,20 +130,41 @@ function generateFloorsLifts(rootElement, liftsState, floors, lifts) {
   }
 }
 
-function simulate(buttonId, liftsState) {
-  console.log(buttonId);
-  console.log(liftsState);
-  const floorNumber = parseInt(buttonId.split("-")[3]);
+function handleFloorButtonClick(button, liftsState) {
+  const floorNumber = parseInt(button.id.split("-")[3]);
+  for (let i = 0; i < liftsState.length; i++) {
+    if (floorNumber === liftsState[i].currentFloor) {
+      console.log(`Already a lift present on floor ${floorNumber}`);
+      return;
+    }
+  }
   for (let i = 0; i < liftsState.length; i++) {
     if (liftsState[i].isRunning === false) {
       liftsState[i].isRunning = true;
       const currentLift = document.getElementById(liftsState[i].liftId);
-      const transitionDuration = Math.abs(floorNumber - liftsState[i].currentFloor);
-      currentLift.style.transition = `bottom ${2 * transitionDuration}s linear`;
-      currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
+      const transitionDuration = Math.abs(
+        floorNumber - liftsState[i].currentFloor,
+      ) * 2;
       liftsState[i].currentFloor = floorNumber;
-      liftsState[i].isRunning = false;
+      currentLift.style.transition = `bottom ${transitionDuration}s linear`;
+      currentLift.style.bottom = `${174 * (floorNumber - 1)}px`;
+      currentLift.addEventListener("transitionend", (_event) => {
+        const upLeftDoor = document.querySelector(
+          `#${liftsState[i].liftId} .leftDoor`,
+        );
+        upLeftDoor.classList.add("leftDoorAnimation");
+        const upRightDoor = document.querySelector(
+          `#${liftsState[i].liftId} .rightDoor`,
+        );
+        upRightDoor.classList.add("rightDoorAnimation");
+        setTimeout(() => {
+          upLeftDoor.classList.remove("leftDoorAnimation");
+          upRightDoor.classList.remove("rightDoorAnimation");
+          liftsState[i].isRunning = false;
+        }, doorAnimationDuration);
+      });
       break;
     }
   }
+
 }
